@@ -1,0 +1,72 @@
+main {
+  /* set a maximum width for the body */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero {
+  position: relative;
+  background: url(./public/hero.jpg);
+  min-height: 100vh;
+  background-size: cover;
+  background-position: 30% 70%;
+}
+
+.row {
+  margin-top: 0;
+  padding-top: 2rem;
+}
+
+.form {
+  position: relative;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #9ca3af;
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.form-input {
+  height: 55px;
+  text-indent: 33px;
+  border-radius: 10px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.col-md-6 {
+  width: 100%;
+}
+
+/* media screen  */
+@media only screen and (width> 2156px) {
+  main {
+    width: 50%; /* set the body width to 60% of the screen width */
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .hero {
+    min-height: 70vh;
+  }
+  main .row {
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+  }
+  .col-md-6 {
+    width: 100%;
+  }
+}
