@@ -6,17 +6,15 @@
       <div>
         <!-- text box -->
         <div class="mb-3">
-          <div class="col-md-6"><h1>find your book</h1></div>
-          <div class="col-md-6">
+          <div class=""><h1>find your book</h1></div>
+          <div class="">
             <h4>Save up to 90% on millions of titles</h4>
           </div>
         </div>
         <!-- end of text box  -->
         <!-- search bar  -->
 
-        <div
-          class="form col-md-6 d-flex align-items-center justify-content-center"
-        >
+        <div class="form d-flex align-items-center justify-content-center">
           <i class="fa fa-search d-flex align-items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -43,5 +41,80 @@
   </div>
 </section>
 <section>
-  <component src="/pages/renderBooks"></component>
+  <div id="bookCards"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Bookstore</h2>
+      </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <!-- cards -->
+      <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card">
+          <img
+            src="https://m.media-amazon.com/images/I/4159JVChKrL._SX331_BO1,204,203,200_.jpg"
+            class="card-img-top"
+            alt="Book Cover"
+          />
+          <div class="card-body">
+            <div class="product-details d-none">
+              <h5>Responsive design with Bootstrap</h5>
+              <p>Author Name</p>
+              <a href="#" class="btn btn-primary">Buy</a>
+              <a href="#" class="btn btn-secondary">Show Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card">
+          <img src="/public/hero.jpg" class="card-img-top" alt="Book Cover" />
+          <div class="card-body">
+            <div class="product-details d-none">
+              <h5>Responsive design with Bootstrap</h5>
+              <p>Author Name</p>
+              <a href="#" class="btn btn-primary">Buy</a>
+              <a href="#" class="btn btn-secondary">Show Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="col-sm-6 col-md-4 col-lg-2 h-100">
+        <div class="card h-100">
+          <img src="/public/hero2.jpg" class="card-img-top" alt="Book Cover" />
+          <div class="card-body">
+            <div class="product-details d-none">
+              <h5>Responsive design with Bootstrap</h5>
+              <p>Author Name</p>
+              <a href="#" class="btn btn-primary">Buy</a>
+              <a href="#" class="btn btn-secondary">Show Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="col-sm-6 col-md-4 col-lg-2">
+        <div class="card">
+          <img
+            src="https://m.media-amazon.com/images/I/4159JVChKrL._SX331_BO1,204,203,200_.jpg"
+            class="card-img-top"
+            alt="Book Cover"
+          />
+          <div class="card-body">
+            <div class="product-details d-none">
+              <h5>Responsive design with Bootstrap</h5>
+              <p>Author Name</p>
+              <a href="#" class="btn btn-primary">Buy</a>
+              <a href="#" class="btn btn-secondary">Show Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </div>
 </section>
