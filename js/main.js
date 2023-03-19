@@ -100,6 +100,32 @@ function repeatElements() {
 // load page - soft reload / à la SPA
 // (single page application) of the main content
 console.log("data", data);
+
+const displayBooks = () => {
+  return data.map(
+    ({ title, author, url, price }) => /* html */ `
+<div class="col-sm-6 col-md-4 col-lg-2">
+<div class="card">
+  <img
+    src=${url}
+    class="card-img-top"
+    alt="Book Cover"
+  />
+  <div class="card-body">
+    <div class="product-details d-none pe-auto">
+      <h5>${title}</h5>
+      <p>Author: ${author}</p>
+      <p>Price: ${price} $</p>
+      <a href="#" class="btn btn-primary mb-1">Buy</a>
+      <a href="#" class="btn btn-secondary">Show Details</a>
+    </div>
+  </div>
+</div>
+</div>
+`
+  );
+};
+
 const pageCache = {};
 async function loadPage(src = location.pathname) {
   src = src === "/" ? "/start" : src;
@@ -109,16 +135,6 @@ async function loadPage(src = location.pathname) {
   console.log("html", html);
   console.log("src", src);
 
-  if (src === "/html/pages//about.html") {
-    console.log("true", true);
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    console.log("doc", doc);
-    const title = doc.getElementById("title");
-    title.textContent = "New Page Title";
-    doc.body.appendChild(heading);
-    html = doc.documentElement.outerHTML;
-  }
   if (src !== "/html/pages//start.html") {
     $("main").innerHTML = html;
   }
@@ -129,7 +145,8 @@ async function loadPage(src = location.pathname) {
     const doc = parser.parseFromString(html, "text/html");
     /* get the div with the id  */
     const selectedElement = doc.querySelector("#bookCards");
-    selectedElement.textContent = "New Page Title";
+    selectedElement.innerHTML = displayBooks().join("");
+    /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element */
     html = doc.documentElement.outerHTML;
   }
 
@@ -139,10 +156,6 @@ async function loadPage(src = location.pathname) {
   // set active link in navbar
   setActiveLinkInNavbar();
 }
-
-const bookCards = () => {
-  data.map({});
-};
 
 // set the correct link active in navbar match on
 // the attributes 'href' and also 'active-if-url-starts-with'
@@ -162,63 +175,6 @@ const bookCards = () => {
   }
   oldActive && oldActive.classList.remove("active");
   newActive && newActive.classList.add("active");
-} */
-
-/* unction start() {
-  let html = "";
-
- 
-
-  html += `
-   <section class="hero">
-        <div class="container d-flex justify-content-center align-items-center">
-          <div
-            class="row flex-lg-row flex-column d-flex justify-content-center align-items-center"
-          >
-            <div>
-              <!-- text box -->
-              <div class="mb-3">
-                <div class="col-md-6"><h1>find your book</h1></div>
-                <div class="col-md-6">
-                  <h4>Save up to 90% on millions of titles</h4>
-                </div>
-              </div>
-              <!-- end of text box  -->
-              <!-- search bar  -->
-
-              <div
-                class="form col-md-6 d-flex align-items-center justify-content-center"
-              >
-                <i class="fa fa-search d-flex align-items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-search"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                    />
-                  </svg>
-                </i>
-                <input
-                  type="text"
-                  class="form-control form-input"
-                  placeholder="Search your book..."
-                />
-              </div>
-              <!-- end of search bar  -->
-            </div>
-          </div>
-        </div>
-      </section>
-   `;
-  bookCards();
-
-  console.log("get the element", document.querySelector("main"));
-  document.querySelector("main").innerHTML = html;
 } */
 
 // mount components and load the page

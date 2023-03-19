@@ -3,8 +3,8 @@ main {
   width: 100%;
   margin: 0 auto;
 }
-body {
-  background-color: red;
+.container {
+  padding-top: 8%;
 }
 .hero {
   position: relative;
@@ -69,14 +69,65 @@ body {
 }
 
 /* end of book card style */
+
+/* books details style */
+.row {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+.card {
+  border: none;
+}
+.product {
+  background-color: #eee;
+}
+.brand {
+  font-size: 13px;
+}
+.act-price {
+  color: red;
+  font-weight: 700;
+}
+.dis-price {
+  text-decoration: line-through;
+}
+.about {
+  font-size: 1rem;
+}
+.color {
+  margin-bottom: 10px;
+}
+
+.btn-danger {
+  background-color: #ff0000 !important;
+  border-color: #ff0000 !important;
+}
+.btn-danger:hover {
+  background-color: #da0606 !important;
+  border-color: #da0606 !important;
+}
+.btn-danger:focus {
+  box-shadow: none;
+}
+.cart i {
+  margin-right: 10px;
+}
+/* end of books details  */
+
 /* media screen  */
 @media only screen and (width> 2156px) {
+  .container {
+    padding-top: 20%;
+  }
   main {
     width: 50%; /* set the body width to 60% of the screen width */
   }
 }
 
 @media only screen and (max-width: 991px) {
+  .container {
+    padding-top: 20%;
+  }
   .hero {
     min-height: 70vh;
   }
