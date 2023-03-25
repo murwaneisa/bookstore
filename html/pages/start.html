@@ -39,6 +39,7 @@
   </div>
 </section>
 <br />
+<!-- display books section -->
 <section>
   <div class="container" style="border: red 2px solid">
     <div
@@ -49,18 +50,21 @@
         <h2>Category: <span>all</span></h2>
       </div>
       <div class="">
-        <select name="Categories" id="categories">
-          <option value="all">All</option>
-          <option value="ux">UX</option>
-          <option value="html">HTML</option>
-          <option value="css">CSS</option>
-          <option value="javascript">Javascript</option>
+        <select name="Categories" class="Category" id="selected_category">
+          <option value="all" cate="all">All</option>
+          <option value="UX">UX</option>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="Javascript">Javascript</option>
         </select>
       </div>
     </div>
+    <!-- render books section -->
     <div
       class="row justify-content-center mb-3 row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
       id="bookCards"
     ></div>
+    <!-- end of render books section -->
   </div>
 </section>
+<!-- end of display book section -->

@@ -73,17 +73,31 @@ function repeatElements() {
   );
 } */
 
-const filter_books = (book_id) => {
-  return data.filter((filter_books) => filter_books.id == book_id);
+const filter_books_id = (book_id) => {
+  return data.filter((filter_books_id) => filter_books_id.id == book_id);
 };
+const filter_books_cate = (book_cate) => {
+  console.log("book_category", book_cate);
+  return data.filter((filter_books) => filter_books.category === book_cate);
+};
+
 let get_book_id;
+let get_books_category;
+let filtered_Data = [];
 // listen to click on all a tags
+
 $("body").addEventListener("click", (e) => {
-  e.preventDefault();
   let aElement = e.target.closest("a");
   let book_Details = e.target.closest(".details");
-  let category = e.target.closest("html");
-  console.log("category", category);
+  //let books_cate = document.getElementById("selected_category");
+  let books_cate = e.target.closest("select");
+
+  if (books_cate !== null) {
+    //get_books_category = books_cate.options[books_cate.selectedIndex].value;
+    get_books_category = books_cate.options[books_cate.selectedIndex].value;
+    filtered_Data = filter_books_cate(get_books_category);
+    console.log("cate", filtered_Data);
+  }
 
   if (book_Details) {
     get_book_id = book_Details.getAttribute("data-id");
@@ -107,7 +121,8 @@ $("body").addEventListener("click", (e) => {
   // load the page
   loadPage(href);
 });
-
+filtered_Data;
+console.log("data is ", filtered_Data);
 // when the user navigates back / forward -> load page
 window.addEventListener("popstate", () => loadPage());
 
@@ -146,7 +161,7 @@ async function loadPage(src = location.pathname) {
   src = `/html/pages/${src}.html`;
   let html = pageCache[src] || (await fetchText(src));
   pageCache[src] = html;
-  console.log("html", html);
+  //console.log("html", html);
   //console.log("src", src);
 
   if (src === "/html/pages//start.html") {
@@ -161,14 +176,11 @@ async function loadPage(src = location.pathname) {
   }
 
   if (src === "/html/pages//details.html") {
-    console.log("src the datails", src);
     /*  convert the HTML string to a DOM tree using the DOMParser object */
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
     /* get the div with the id  */
-    const book_info = filter_books(get_book_id);
-    console.log("book_information", book_info);
-
+    const book_info = filter_books_id(get_book_id);
     doc.querySelector("#img_id").innerHTML = `<img
         id="main-image"
         src=${book_info[0].url}
@@ -186,8 +198,6 @@ async function loadPage(src = location.pathname) {
   $("main").innerHTML = html;
   // run componentMount (mount new components if any)
   componentMount();
-  const getBookName = document.querySelector("#text-muted");
-  console.log("get_book_id", filter_books(get_book_id));
   // set active link in navbar
   setActiveLinkInNavbar();
 }
