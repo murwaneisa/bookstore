@@ -9,6 +9,8 @@ import data from "../public/books-data.json";
 // import bootstrap JS part
 import * as bootstrap from "bootstrap";
 
+//import { compileString } from "sass";
+
 // helper: grab a DOM element
 const $ = (el) => document.querySelector(el);
 console.log("$", $);
@@ -71,9 +73,21 @@ function repeatElements() {
   );
 } */
 
+const filter_books = (book_id) => {
+  return data.filter((filter_books) => filter_books.id == book_id);
+};
+let get_book_id;
 // listen to click on all a tags
-/* $("body").addEventListener("click", (e) => {
+$("body").addEventListener("click", (e) => {
+  e.preventDefault();
   let aElement = e.target.closest("a");
+  let book_Details = e.target.closest(".details");
+  let category = e.target.closest("html");
+  console.log("category", category);
+
+  if (book_Details) {
+    get_book_id = book_Details.getAttribute("data-id");
+  }
   if (!aElement) {
     return;
   }
@@ -92,10 +106,10 @@ function repeatElements() {
   history.pushState(null, null, href);
   // load the page
   loadPage(href);
-}); */
+});
 
 // when the user navigates back / forward -> load page
-/* window.addEventListener("popstate", () => loadPage()); */
+window.addEventListener("popstate", () => loadPage());
 
 // load page - soft reload / à la SPA
 // (single page application) of the main content
@@ -103,7 +117,7 @@ console.log("data", data);
 
 const displayBooks = () => {
   return data.map(
-    ({ title, author, url, price }) => /* html */ `
+    ({ title, author, url, price, id }) => /* html */ `
 <div class="col-sm-6 col-md-4 col-lg-2">
 <div class="card">
   <img
@@ -113,11 +127,11 @@ const displayBooks = () => {
   />
   <div class="card-body">
     <div class="product-details d-none pe-auto">
-      <h5>${title}</h5>
+      <h6>${title}</h6>
       <p>Author: ${author}</p>
       <p>Price: ${price} $</p>
       <a href="#" class="btn btn-primary mb-1">Buy</a>
-      <a href="#" class="btn btn-secondary">Show Details</a>
+      <a href="/details" class="btn btn-secondary details" data-id=${id} >Show Details</a>
     </div>
   </div>
 </div>
@@ -133,11 +147,7 @@ async function loadPage(src = location.pathname) {
   let html = pageCache[src] || (await fetchText(src));
   pageCache[src] = html;
   console.log("html", html);
-  console.log("src", src);
-
-  if (src !== "/html/pages//start.html") {
-    $("main").innerHTML = html;
-  }
+  //console.log("src", src);
 
   if (src === "/html/pages//start.html") {
     /*  convert the HTML string to a DOM tree using the DOMParser object */
@@ -150,16 +160,41 @@ async function loadPage(src = location.pathname) {
     html = doc.documentElement.outerHTML;
   }
 
+  if (src === "/html/pages//details.html") {
+    console.log("src the datails", src);
+    /*  convert the HTML string to a DOM tree using the DOMParser object */
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    /* get the div with the id  */
+    const book_info = filter_books(get_book_id);
+    console.log("book_information", book_info);
+
+    doc.querySelector("#img_id").innerHTML = `<img
+        id="main-image"
+        src=${book_info[0].url}
+        width="100%"
+      />`;
+    doc.querySelector("#title-id").innerHTML = book_info[0].title;
+    doc.querySelector("#author-id").innerHTML = book_info[0].author;
+    doc.querySelector("#price-id").innerHTML = book_info[0].price;
+    doc.querySelector("#description-id").innerHTML = book_info[0].description;
+
+    /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element */
+    html = doc.documentElement.outerHTML;
+  }
+
   $("main").innerHTML = html;
   // run componentMount (mount new components if any)
   componentMount();
+  const getBookName = document.querySelector("#text-muted");
+  console.log("get_book_id", filter_books(get_book_id));
   // set active link in navbar
   setActiveLinkInNavbar();
 }
 
 // set the correct link active in navbar match on
 // the attributes 'href' and also 'active-if-url-starts-with'
-/* function setActiveLinkInNavbar() {
+function setActiveLinkInNavbar() {
   let href = location.pathname;
   let oldActive = $("nav .active");
   let newActive = $(`nav a[href="${href}"]:not(.navbar-brand)`);
@@ -175,7 +210,7 @@ async function loadPage(src = location.pathname) {
   }
   oldActive && oldActive.classList.remove("active");
   newActive && newActive.classList.add("active");
-} */
+}
 
 // mount components and load the page
 componentMount().then((x) => loadPage());
