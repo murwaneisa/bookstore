@@ -13,7 +13,6 @@ import * as bootstrap from "bootstrap";
 
 // helper: grab a DOM element
 const $ = (el) => document.querySelector(el);
-console.log("$", $);
 
 // helper: fetch a text/html file (and remove vite injections)
 const fetchText = async (url) =>
@@ -64,39 +63,46 @@ function repeatElements() {
   }
 }
 
-// special fix on repeat of random unsplash image
-// (so that we don't cache and show the same image)
-/* function unsplashFix(html) {
-  return html.replace(
-    /(https:\/\/source.unsplash.com\/random\/?[^"]*)/g,
-    "$1&" + Math.random()
-  );
-} */
-
 const filter_books_id = (book_id) => {
   return data.filter((filter_books_id) => filter_books_id.id == book_id);
 };
 const filter_books_cate = (book_cate) => {
-  console.log("book_category", book_cate);
+  if (book_cate == "all") {
+    return data;
+  }
   return data.filter((filter_books) => filter_books.category === book_cate);
 };
 
 let get_book_id;
-let get_books_category;
-let filtered_Data = [];
-// listen to click on all a tags
-
+let get_book_cate = "all";
 $("body").addEventListener("click", (e) => {
   let aElement = e.target.closest("a");
   let book_Details = e.target.closest(".details");
   //let books_cate = document.getElementById("selected_category");
-  let books_cate = e.target.closest("select");
+  let cate_ux = e.target.closest(".UX");
 
-  if (books_cate !== null) {
-    //get_books_category = books_cate.options[books_cate.selectedIndex].value;
-    get_books_category = books_cate.options[books_cate.selectedIndex].value;
-    filtered_Data = filter_books_cate(get_books_category);
-    console.log("cate", filtered_Data);
+  let cate_html = e.target.closest(".HTML");
+
+  let cate_css = e.target.closest(".CSS");
+
+  let cate_js = e.target.closest(".Javascript");
+
+  if (cate_ux) {
+    get_book_cate = cate_ux.getAttribute("cate_href");
+    console.log("cate_href ", get_book_cate);
+  }
+
+  if (cate_html) {
+    get_book_cate = cate_html.getAttribute("cate_href");
+    console.log("cate_href ", get_book_cate);
+  }
+  if (cate_css) {
+    get_book_cate = cate_css.getAttribute("cate_href");
+    console.log("cate_href ", get_book_cate);
+  }
+  if (cate_js) {
+    get_book_cate = cate_js.getAttribute("cate_href");
+    console.log("cate_href ", get_book_cate);
   }
 
   if (book_Details) {
@@ -121,17 +127,15 @@ $("body").addEventListener("click", (e) => {
   // load the page
   loadPage(href);
 });
-filtered_Data;
-console.log("data is ", filtered_Data);
+
 // when the user navigates back / forward -> load page
 window.addEventListener("popstate", () => loadPage());
 
 // load page - soft reload / à la SPA
 // (single page application) of the main content
-console.log("data", data);
 
 const displayBooks = () => {
-  return data.map(
+  return filter_books_cate(get_book_cate).map(
     ({ title, author, url, price, id }) => /* html */ `
 <div class="col-sm-6 col-md-4 col-lg-2">
 <div class="card">
@@ -170,6 +174,9 @@ async function loadPage(src = location.pathname) {
     const doc = parser.parseFromString(html, "text/html");
     /* get the div with the id  */
     const selectedElement = doc.querySelector("#bookCards");
+    /*  change the category name  */
+    const cate_type = doc.querySelector("#cate_type");
+    cate_type.innerHTML = get_book_cate;
     selectedElement.innerHTML = displayBooks().join("");
     /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element */
     html = doc.documentElement.outerHTML;
@@ -179,7 +186,7 @@ async function loadPage(src = location.pathname) {
     /*  convert the HTML string to a DOM tree using the DOMParser object */
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
-    /* get the div with the id  */
+    /* get the div with the id and change the  html tags value  */
     const book_info = filter_books_id(get_book_id);
     doc.querySelector("#img_id").innerHTML = `<img
         id="main-image"
@@ -198,6 +205,9 @@ async function loadPage(src = location.pathname) {
   $("main").innerHTML = html;
   // run componentMount (mount new components if any)
   componentMount();
+  /*   let test = document.querySelector("#selected_category");
+  console.log("read", test.options[test.selectedIndex].value); */
+
   // set active link in navbar
   setActiveLinkInNavbar();
 }
