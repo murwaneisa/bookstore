@@ -78,7 +78,8 @@ let get_book_cate = "all";
 $("body").addEventListener("click", (e) => {
   let aElement = e.target.closest("a");
   let book_Details = e.target.closest(".details");
-  //let books_cate = document.getElementById("selected_category");
+  let checkout_id = e.target.closest(".checkout_id");
+  console.log("checkout_id", checkout_id.getAttribute("book-checkout"));
   let cate_ux = e.target.closest(".UX");
 
   let cate_html = e.target.closest(".HTML");
@@ -106,7 +107,7 @@ $("body").addEventListener("click", (e) => {
   }
 
   if (book_Details) {
-    get_book_id = book_Details.getAttribute("data-id");
+    get_book_id = book_Details.getAttribute("book-id");
   }
   if (!aElement) {
     return;
@@ -149,8 +150,8 @@ const displayBooks = () => {
       <h6>${title}</h6>
       <p>Author: ${author}</p>
       <p>Price: ${price} $</p>
-      <a href="#" class="btn btn-primary mb-1">Buy</a>
-      <a href="/details" class="btn btn-secondary details" data-id=${id} >Show Details</a>
+      <a  class="btn btn-primary mb-1 checkout_id" book-checkout=${id}>Buy</a>
+      <a href="/details" class="btn btn-secondary details" book-id=${id} >Show Details</a>
     </div>
   </div>
 </div>
