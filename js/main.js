@@ -73,20 +73,38 @@ const filter_books_cate = (book_cate) => {
   return data.filter((filter_books) => filter_books.category === book_cate);
 };
 
+const checkout_array = [];
+const checkout = (book_id) => {
+  const filteredBook = data.filter(
+    (filter_books_id) => filter_books_id.id == book_id
+  );
+  //console.log("filteredBook", filteredBook);
+  return checkout_array.push(filteredBook[0]);
+};
+
 let get_book_id;
 let get_book_cate = "all";
 $("body").addEventListener("click", (e) => {
   let aElement = e.target.closest("a");
-  let book_Details = e.target.closest(".details");
+  let book_details = e.target.closest(".details");
   let checkout_id = e.target.closest(".checkout_id");
-  console.log("checkout_id", checkout_id.getAttribute("book-checkout"));
+
+  let cate_js = e.target.closest(".Javascript");
+  if (checkout_id) {
+    //console.log("checkout_id", checkout_id.getAttribute("book-checkout"));
+    const bookId = checkout_id.getAttribute("book-checkout");
+    console.log("checkout", checkout(bookId));
+  }
+  if (book_details) {
+    get_book_id = book_details.getAttribute("book-id");
+    console.log("get_book_id", get_book_id);
+  }
+  /* get the category type*/
   let cate_ux = e.target.closest(".UX");
 
   let cate_html = e.target.closest(".HTML");
 
   let cate_css = e.target.closest(".CSS");
-
-  let cate_js = e.target.closest(".Javascript");
 
   if (cate_ux) {
     get_book_cate = cate_ux.getAttribute("cate_href");
@@ -105,10 +123,7 @@ $("body").addEventListener("click", (e) => {
     get_book_cate = cate_js.getAttribute("cate_href");
     console.log("cate_href ", get_book_cate);
   }
-
-  if (book_Details) {
-    get_book_id = book_Details.getAttribute("book-id");
-  }
+  /* end of get the category type */
   if (!aElement) {
     return;
   }
@@ -126,9 +141,9 @@ $("body").addEventListener("click", (e) => {
   // 'navigate' / change url
   history.pushState(null, null, href);
   // load the page
+  console.log("check", checkout_array);
   loadPage(href);
 });
-
 // when the user navigates back / forward -> load page
 window.addEventListener("popstate", () => loadPage());
 
@@ -150,13 +165,98 @@ const displayBooks = () => {
       <h6>${title}</h6>
       <p>Author: ${author}</p>
       <p>Price: ${price} $</p>
-      <a  class="btn btn-primary mb-1 checkout_id" book-checkout=${id}>Buy</a>
+      <a href="/" class="btn btn-primary mb-1 checkout_id" book-checkout=${id}>Buy</a>
       <a href="/details" class="btn btn-secondary details" book-id=${id} >Show Details</a>
     </div>
   </div>
 </div>
 </div>
 `
+  );
+};
+
+const checkoutCard = () => {
+  console.log("checkout is", checkout_array[0].title);
+  return checkout_array.map(
+    ({ title, author, price }) => /* html */ `
+  <tr>
+                <th scope="row">
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="https://i.imgur.com/2DsA49b.webp"
+                      class="img-fluid rounded-3"
+                      style="width: 120px"
+                      alt="Book"
+                    />
+                    <div class="flex-column ms-4">
+                      <p class="mb-2">${title}</p>
+                      <p class="mb-0">${author}</p>
+                    </div>
+                  </div>
+                </th>
+                <td class="align-middle">
+                  <p class="mb-0" style="font-weight: 500">Digital</p>
+                </td>
+                <td class="align-middle">
+                  <div class="d-flex flex-row">
+                    <button
+                      class="btn btn-link px-2"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    >
+                      <!-- minus icon -->
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-dash-lg"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                        />
+                      </svg>
+                      <!-- end od minus icon -->
+                    </button>
+
+                    <input
+                      id="form1"
+                      min="0"
+                      name="quantity"
+                      value="2"
+                      type="number"
+                      class="form-control form-control-sm"
+                      style="width: 50px"
+                    />
+
+                    <button
+                      class="btn btn-link px-2"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    >
+                      <!-- plus icon -->
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-plus-lg"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                        />
+                      </svg>
+                      <!-- end of plus icon -->
+                    </button>
+                  </div>
+                </td>
+                <td class="align-middle">
+                  <p class="mb-0" style="font-weight: 500">${price}</p>
+                </td>
+              </tr>
+  `
   );
 };
 
@@ -176,10 +276,23 @@ async function loadPage(src = location.pathname) {
     /* get the div with the id  */
     const selectedElement = doc.querySelector("#bookCards");
     /*  change the category name  */
-    const cate_type = doc.querySelector("#cate_type");
-    cate_type.innerHTML = get_book_cate;
+    const cate_title = doc.querySelector("#cate_title");
+    cate_title.innerHTML = get_book_cate;
     selectedElement.innerHTML = displayBooks().join("");
     /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element */
+    html = doc.documentElement.outerHTML;
+  }
+  if (src === "/html/pages//checkout.html") {
+    /*  convert the HTML string to a DOM tree using the DOMParser object */
+    const parse = new DOMParser();
+    const document = parse.parseFromString(html, "text/html");
+    /* get the div with the id  */
+    const selectedElement = document.querySelector("#bookCards");
+    /*  change the category name  */
+    const chockElement = document.querySelector("#tbody");
+    console.log("cate_type", chockElement);
+    chockElement.innerHTML = checkoutCard().join("");
+    /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element
     html = doc.documentElement.outerHTML;
   }
 
