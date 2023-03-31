@@ -176,9 +176,8 @@ const displayBooks = () => {
 };
 
 const checkoutCard = () => {
-  console.log("checkout is", checkout_array[0].title);
   return checkout_array.map(
-    ({ title, author, price, url }) => /* html */ `
+    ({ title, author, price, url, format }) => /* html */ `
   <tr>
                 <th scope="row">
                   <div class="d-flex flex-column flex-md-row .align-items-start align-items-md-center" class="checkout">
@@ -195,10 +194,10 @@ const checkoutCard = () => {
                   </div>
                 </th>
                 <td class="align-middle">
-                  <p class="mb-0" style="font-weight: 500">Digital</p>
+                  <p class="mb-0" style="font-weight: 500">${format}</p>
                 </td>
                 <td class="align-middle">
-                  <div class="d-flex flex-row">
+                  <div class="d-flex flex-row align-items-center ">
                     <button
                       class="btn btn-link px-2"
                       onclick="this.parentNode.querySelector('input[type=number]').stepDown()"

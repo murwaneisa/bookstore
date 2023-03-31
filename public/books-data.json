@@ -6,7 +6,9 @@
     "category": "UX",
     "url": "https://m.media-amazon.com/images/I/4159JVChKrL._SX331_BO1,204,203,200_.jpg",
     "price": 127,
-    "title": "Responsive design with Bootstrap"
+    "title": "Responsive design with Bootstrap",
+    "trending": true,
+    "format": "Paper"
   },
   {
     "id": 2,
@@ -15,7 +17,8 @@
     "category": "UX",
     "url": "https://m.media-amazon.com/images/I/41wtMWZjwtL._SY344_BO1,204,203,200_.jpg",
     "price": 168,
-    "title": "UX Design Essential Handbook"
+    "title": "UX Design Essential Handbook",
+    "format": "Digital"
   },
   {
     "id": 3,
@@ -24,7 +27,8 @@
     "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
     "url": "https://m.media-amazon.com/images/I/412EhKs+jgL._SX258_BO1,204,203,200_.jpg",
     "price": 149,
-    "title": "Project Guide to UX Design"
+    "title": "Project Guide to UX Design",
+    "format": "Paper"
   },
   {
     "id": 4,
@@ -33,7 +37,9 @@
     "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
     "url": "https://m.media-amazon.com/images/I/31G+uDNT54L._SX322_BO1,204,203,200_.jpg",
     "price": 130,
-    "title": "Get Into UX"
+    "title": "Get Into UX",
+    "trending": true,
+    "format": "Digital"
   },
   {
     "id": 5,
@@ -42,7 +48,8 @@
     "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
     "url": "https://m.media-amazon.com/images/I/41s27j523EL._SX392_BO1,204,203,200_.jpg",
     "price": 157,
-    "title": "The UX Book"
+    "title": "The UX Book",
+    "format": "Digital"
   },
   {
     "id": 6,
@@ -51,7 +58,9 @@
     "category": "HTML",
     "url": "https://m.media-amazon.com/images/I/516RPfVV5QL._SX258_BO1,204,203,200_.jpg",
     "price": 153,
-    "title": "HTML - an introduction"
+    "title": "HTML - an introduction",
+    "trending": true,
+    "format": "Paper"
   },
   {
     "id": 7,
@@ -60,7 +69,8 @@
     "category": "HTML",
     "url": "https://m.media-amazon.com/images/I/51D8nu8vjmL._SX258_BO1,204,203,200_.jpg",
     "price": 169,
-    "title": "HTML, CSS and JavaScript in easy steps"
+    "title": "HTML, CSS and JavaScript in easy steps",
+    "format": "Digital"
   },
   {
     "id": 8,
@@ -69,7 +79,8 @@
     "category": "HTML",
     "url": "https://m.media-amazon.com/images/I/41WznOEKmAL._SX258_BO1,204,203,200_.jpg",
     "price": 152,
-    "title": "Sales Representative"
+    "title": "Sales Representative",
+    "format": "Paper"
   },
   {
     "id": 9,
@@ -78,7 +89,8 @@
     "category": "HTML",
     "url": "https://m.media-amazon.com/images/I/41WznOEKmAL._SX396_BO1,204,203,200_.jpg",
     "price": 172,
-    "title": "HTML & CSS: Design and Build Websites "
+    "title": "HTML & CSS: Design and Build Websites",
+    "format": "Digital"
   },
   {
     "id": 10,
@@ -87,7 +99,8 @@
     "category": "HTML",
     "url": "https://m.media-amazon.com/images/I/71TSuC-K-mL._AC_UL480_QL65_.jpg",
     "price": 154,
-    "title": "Head First HTML and CSS"
+    "title": "Head First HTML and CSS",
+    "format": "Paper"
   },
   {
     "id": 11,
@@ -96,7 +109,8 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://m.media-amazon.com/images/I/61plw9np7PL._AC_UL480_QL65_.jpg",
     "price": 108,
-    "title": "CSS - an introduction"
+    "title": "CSS - an introduction",
+    "format": "Digital"
   },
   {
     "id": 12,
@@ -105,7 +119,9 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://m.media-amazon.com/images/I/51PaEv1nd0L._AC_UL480_QL65_.jpg",
     "price": 134,
-    "title": "CSS in Depth"
+    "title": "CSS in Depth",
+    "trending": true,
+    "format": "Paper"
   },
   {
     "id": 13,
@@ -114,7 +130,8 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://m.media-amazon.com/images/I/71xVO2SmgaL._AC_UL480_QL65_.jpg",
     "price": 123,
-    "title": "Responsive Web Design with HTML5 and CSS"
+    "title": "Responsive Web Design with HTML5 and CSS",
+    "format": "Digital"
   },
   {
     "id": 14,
@@ -123,7 +140,8 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://m.media-amazon.com/images/I/516JyGAXUEL._AC_UL480_QL65_.jpg",
     "price": 105,
-    "title": "The Big Book Of CSS"
+    "title": "The Big Book Of CSS",
+    "format": "Paper"
   },
   {
     "id": 15,
@@ -132,7 +150,8 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://m.media-amazon.com/images/I/61ZyjYgEqxL._AC_UL480_QL65_.jpg",
     "price": 113,
-    "title": "CSS Notes for Professionals book"
+    "title": "CSS Notes for Professionals book",
+    "format": "Digital"
   },
   {
     "id": 16,
@@ -141,7 +160,8 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://codingbeautydev.com/wp-content/uploads/2022/11/eloquent-javascript.jpg",
     "price": 150,
-    "title": "JavaScript - an introduction"
+    "title": "JavaScript - an introduction",
+    "format": "Paper"
   },
   {
     "id": 17,
@@ -150,7 +170,8 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://codingbeautydev.com/wp-content/uploads/2022/08/javascript-the-definitive-guide-1.jpg",
     "price": 162,
-    "title": "JavaScript: The Definitive Guide"
+    "title": "JavaScript: The Definitive Guide",
+    "format": "Digital"
   },
   {
     "id": 18,
@@ -159,7 +180,9 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://codingbeautydev.com/wp-content/uploads/2022/11/eloquent-javascript.jpg",
     "price": 144,
-    "title": "Eloquent JavaScript: A Modern Introduction to Programming"
+    "title": "Eloquent JavaScript: A Modern Introduction to Programming",
+    "trending": true,
+    "format": "Paper"
   },
   {
     "id": 19,
@@ -168,7 +191,8 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://codingbeautydev.com/wp-content/uploads/2022/08/head-first-javascript-programming.jpg",
     "price": 136,
-    "title": "Head First JavaScript Programming"
+    "title": "Head First JavaScript Programming",
+    "format": "Digital"
   },
   {
     "id": 20,
@@ -177,6 +201,7 @@
     "description": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque.",
     "url": "https://codingbeautydev.com/wp-content/uploads/2022/09/you-dont-know-js.jpg",
     "price": 117,
-    "title": "You Don’t Know JS"
+    "title": "You Don’t Know JS",
+    "format": "Paper"
   }
 ]
