@@ -178,18 +178,18 @@ const displayBooks = () => {
 const checkoutCard = () => {
   console.log("checkout is", checkout_array[0].title);
   return checkout_array.map(
-    ({ title, author, price }) => /* html */ `
+    ({ title, author, price, url }) => /* html */ `
   <tr>
                 <th scope="row">
-                  <div class="d-flex align-items-center">
+                  <div class="d-flex flex-column flex-md-row .align-items-start align-items-md-center" class="checkout">
                     <img
-                      src="https://i.imgur.com/2DsA49b.webp"
+                      src=${url}
                       class="img-fluid rounded-3"
                       style="width: 120px"
                       alt="Book"
                     />
-                    <div class="flex-column ms-4">
-                      <p class="mb-2">${title}</p>
+                    <div class="flex-column ms-0 ms-md-4">
+                      <p class="mb-2 md">${title}</p>
                       <p class="mb-0">${author}</p>
                     </div>
                   </div>
@@ -224,7 +224,7 @@ const checkoutCard = () => {
                       id="form1"
                       min="0"
                       name="quantity"
-                      value="2"
+                      value="1"
                       type="number"
                       class="form-control form-control-sm"
                       style="width: 50px"
@@ -283,7 +283,6 @@ async function loadPage(src = location.pathname) {
     html = doc.documentElement.outerHTML;
   }
   if (src === "/html/pages//checkout.html") {
-    /*  convert the HTML string to a DOM tree using the DOMParser object */
     const parse = new DOMParser();
     const document = parse.parseFromString(html, "text/html");
     /* get the div with the id  */
@@ -292,8 +291,7 @@ async function loadPage(src = location.pathname) {
     const chockElement = document.querySelector("#tbody");
     console.log("cate_type", chockElement);
     chockElement.innerHTML = checkoutCard().join("");
-    /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element
-    html = doc.documentElement.outerHTML;
+    html = document.documentElement.outerHTML;
   }
 
   if (src === "/html/pages//details.html") {
@@ -311,17 +309,18 @@ async function loadPage(src = location.pathname) {
     doc.querySelector("#author-id").innerHTML = book_info[0].author;
     doc.querySelector("#price-id").innerHTML = book_info[0].price;
     doc.querySelector("#description-id").innerHTML = book_info[0].description;
+    doc.querySelector("#checkout_det").innerHTML = `<button
+    class="btn btn-danger text-uppercase mr-2 px-4 checkout_id" book-checkout=${book_info[0].id}
+  >
+    Add to cart
+  </button>`;
 
-    /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element */
     html = doc.documentElement.outerHTML;
   }
 
   $("main").innerHTML = html;
   // run componentMount (mount new components if any)
   componentMount();
-  /*   let test = document.querySelector("#selected_category");
-  console.log("read", test.options[test.selectedIndex].value); */
-
   // set active link in navbar
   setActiveLinkInNavbar();
 }
