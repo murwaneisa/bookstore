@@ -79,11 +79,13 @@ const checkout = (book_id) => {
     (filter_books_id) => filter_books_id.id == book_id
   );
   //console.log("filteredBook", filteredBook);
-  return checkout_array.push(filteredBook[0]);
+  checkout_array.push(filteredBook[0]);
+  return localStorage.setItem("checkout_array", JSON.stringify(checkout_array));
 };
 
 let get_book_id;
 let get_book_cate = "all";
+
 $("body").addEventListener("click", (e) => {
   let aElement = e.target.closest("a");
   let book_details = e.target.closest(".details");
@@ -93,11 +95,11 @@ $("body").addEventListener("click", (e) => {
   if (checkout_id) {
     //console.log("checkout_id", checkout_id.getAttribute("book-checkout"));
     const bookId = checkout_id.getAttribute("book-checkout");
-    console.log("checkout", checkout(bookId));
+    checkout(bookId);
   }
   if (book_details) {
     get_book_id = book_details.getAttribute("book-id");
-    console.log("get_book_id", get_book_id);
+    localStorage.setItem("book_id", JSON.stringify(get_book_id));
   }
   /* get the category type*/
   let cate_ux = e.target.closest(".UX");
@@ -141,7 +143,6 @@ $("body").addEventListener("click", (e) => {
   // 'navigate' / change url
   history.pushState(null, null, href);
   // load the page
-  console.log("check", checkout_array);
   loadPage(href);
 });
 // when the user navigates back / forward -> load page
@@ -176,7 +177,10 @@ const displayBooks = () => {
 };
 
 const checkoutCard = () => {
-  return checkout_array.map(
+  const check_data = localStorage.getItem("checkout_array")
+    ? JSON.parse(localStorage.getItem("checkout_array"))
+    : "";
+  return check_data.map(
     ({ title, author, price, url, format }) => /* html */ `
   <tr>
                 <th scope="row">
@@ -288,7 +292,6 @@ async function loadPage(src = location.pathname) {
     const selectedElement = document.querySelector("#bookCards");
     /*  change the category name  */
     const chockElement = document.querySelector("#tbody");
-    console.log("cate_type", chockElement);
     chockElement.innerHTML = checkoutCard().join("");
     html = document.documentElement.outerHTML;
   }
@@ -297,8 +300,13 @@ async function loadPage(src = location.pathname) {
     /*  convert the HTML string to a DOM tree using the DOMParser object */
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
-    /* get the div with the id and change the  html tags value  */
-    const book_info = filter_books_id(get_book_id);
+    /* get the the book and save it into localStorage */
+    // get the book info  from localStorage
+    const book_id = localStorage.getItem("book_id")
+      ? JSON.parse(localStorage.getItem("book_id"))
+      : "";
+    const book_info = filter_books_id(book_id);
+
     doc.querySelector("#img_id").innerHTML = `<img
         id="main-image"
         src=${book_info[0].url}
