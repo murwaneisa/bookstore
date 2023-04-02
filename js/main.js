@@ -278,9 +278,7 @@ async function loadPage(src = location.pathname) {
     const doc = parser.parseFromString(html, "text/html");
     /* get the div with the id  */
     const selectedElement = doc.querySelector("#bookCards");
-    /*  change the category name  */
-    const cate_title = doc.querySelector("#cate_title");
-    cate_title.innerHTML = get_book_cate;
+
     selectedElement.innerHTML = displayBooks().join("");
     /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element */
     html = doc.documentElement.outerHTML;
