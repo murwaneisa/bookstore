@@ -60,6 +60,10 @@
             Categories
           </a>
           <ul class="dropdown-menu" id="cat-item">
+            <li><a class="dropdown-item all" href="/" cate_href="all">ALL</a></li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
             <li><a class="dropdown-item UX" href="/" cate_href="UX">UX</a></li>
             <li>
               <a class="dropdown-item HTML" href="/" cate_href="HTML">HTML</a>
@@ -87,19 +91,8 @@
           >
             Filter by Author
           </a>
-          <ul class="dropdown-menu" id="cat-item">
-            <li><a class="dropdown-item UX" href="/" cate_href="UX">UX</a></li>
-            <li>
-              <a class="dropdown-item HTML" href="/" cate_href="HTML">HTML</a>
-            </li>
-            <li>
-              <a class="dropdown-item CSS" href="/" cate_href="CSS">CSS</a>
-            </li>
-            <li>
-              <a class="dropdown-item Javascript" href="/" cate_href="Javascript"
-                >Javascript</a
-              >
-            </li>
+          <ul class="dropdown-menu" id="auth_filter" id="cat-item">
+            <!-- render all author here -->
           </ul>
           <!-- end dropdown author -->
         </div>
@@ -129,12 +122,12 @@
             <a class="dropdown-item price_desc" href="/" sort_by="price_desc">price (descending)</a>
             </li>
             <li>
-              <a class="dropdown-item auth_asc" href="/" sort_by="auth_asc"
+              <a class="dropdown-item author_asc" href="/" sort_by="author_asc"
                 >author (ascending)</a
               >
             </li>
             <li>
-              <a class="dropdown-item auth_desc" href="/" sort_by="auth_desc"
+              <a class="dropdown-item author_desc" href="/" sort_by="author_desc"
                 >author (descending)</a
               >
             </li>

@@ -8,9 +8,8 @@ import data from "../public/books-data.json";
 
 // import bootstrap JS part
 import * as bootstrap from "bootstrap";
-
 //import { compileString } from "sass";
-
+import { filterAndSort } from "./filterSort";
 // helper: grab a DOM element
 const $ = (el) => document.querySelector(el);
 
@@ -85,11 +84,18 @@ const checkout = (book_id) => {
 
 let get_book_id;
 let get_book_cate = "all";
-
+let get_auth;
+let sort_type;
 $("body").addEventListener("click", (e) => {
   let aElement = e.target.closest("a");
   let book_details = e.target.closest(".details");
   let checkout_id = e.target.closest(".checkout_id");
+  let a_auth = e.target.closest(".auth_filter");
+
+  if (a_auth) {
+    get_auth = a_auth.getAttribute("auth_value");
+    console.log("get_Auth body", get_auth);
+  }
 
   let cate_js = e.target.closest(".Javascript");
   if (checkout_id) {
@@ -101,13 +107,45 @@ $("body").addEventListener("click", (e) => {
     get_book_id = book_details.getAttribute("book-id");
     localStorage.setItem("book_id", JSON.stringify(get_book_id));
   }
+
+  /* get sorting type */
+  let titleAsc = e.target.closest(".title_asc");
+  let titleDesc = e.target.closest(".title_desc");
+  let priceAsc = e.target.closest(".price_asc");
+  let priceDesc = e.target.closest(".price_desc");
+  let authorAsc = e.target.closest(".author_asc");
+  let authorDesc = e.target.closest(".author_desc");
+
+  if (titleAsc) {
+    sort_type = titleAsc.getAttribute("sort_by");
+  } else if (titleDesc) {
+    sort_type = titleDesc.getAttribute("sort_by");
+    console.log("sort by title is ", sort_type);
+  } else if (priceAsc) {
+    sort_type = priceAsc.getAttribute("sort_by");
+    console.log("sort by price is ", sort_type);
+  } else if (priceDesc) {
+    sort_type = priceDesc.getAttribute("sort_by");
+    console.log("sort by price is ", sort_type);
+  } else if (authorAsc) {
+    sort_type = authorAsc.getAttribute("sort_by");
+    console.log("sort by author is ", sort_type);
+  } else if (authorDesc) {
+    sort_type = authorDesc.getAttribute("sort_by");
+    console.log("sort by author is ", sort_type);
+  }
+  /* end of  get sorting type  */
   /* get the category type*/
+  let cate_all = e.target.closest(".all");
   let cate_ux = e.target.closest(".UX");
 
   let cate_html = e.target.closest(".HTML");
 
   let cate_css = e.target.closest(".CSS");
-
+  if (cate_all) {
+    get_book_cate = cate_all.getAttribute("cate_href");
+    console.log("cate_href work ", get_book_cate);
+  }
   if (cate_ux) {
     get_book_cate = cate_ux.getAttribute("cate_href");
     console.log("cate_href ", get_book_cate);
@@ -125,6 +163,7 @@ $("body").addEventListener("click", (e) => {
     get_book_cate = cate_js.getAttribute("cate_href");
     console.log("cate_href ", get_book_cate);
   }
+
   /* end of get the category type */
   if (!aElement) {
     return;
@@ -152,7 +191,15 @@ window.addEventListener("popstate", () => loadPage());
 // (single page application) of the main content
 
 const displayBooks = () => {
-  return filter_books_cate(get_book_cate).map(
+  //console.log("get_Auth", get_auth);
+  return filterAndSort(
+    data,
+    get_book_cate,
+    get_auth,
+    null,
+    null,
+    sort_type
+  ).map(
     ({ title, author, url, price, id }) => /* html */ `
 <div class="col-sm-6 col-md-4 col-lg-2">
 <div class="card">
@@ -263,6 +310,12 @@ const checkoutCard = () => {
   );
 };
 
+const render_Authors = () => {
+  return data.map(
+    (data) =>
+      /* html */ ` <li><a class="dropdown-item auth_filter" href="/" auth_value=${data.author}>${data.author}</a></li>`
+  );
+};
 const pageCache = {};
 async function loadPage(src = location.pathname) {
   src = src === "/" ? "/start" : src;
@@ -278,7 +331,9 @@ async function loadPage(src = location.pathname) {
     const doc = parser.parseFromString(html, "text/html");
     /* get the div with the id  */
     const selectedElement = doc.querySelector("#bookCards");
-
+    const selected_auth = doc.querySelector("#auth_filter");
+    console.log("seclected_auth", selected_auth);
+    selected_auth.innerHTML = render_Authors().join("");
     selectedElement.innerHTML = displayBooks().join("");
     /* convert the modified DOM tree back to an HTML string using the outerHTML property of the root element */
     html = doc.documentElement.outerHTML;

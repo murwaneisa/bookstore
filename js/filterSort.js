@@ -1,7 +1,24 @@
-function filterAndSort(data, authorFilter, priceMin, priceMax, sortBy) {
+export function filterAndSort(
+  data,
+  cateFilter,
+  authorFilter,
+  priceMin,
+  priceMax,
+  sortBy
+) {
+  if (cateFilter) {
+    console.log("category filter");
+    if (cateFilter != "all") {
+      data = data.filter(
+        (filter_books) => filter_books.category === cateFilter
+      );
+    }
+    data = data;
+  }
   // Apply author filter if specified
   if (authorFilter) {
-    data = data.filter((item) => item.author === authorFilter);
+    console.log("author filter");
+    data = data.filter((item) => item.author == authorFilter);
   }
 
   // Apply price interval filter if specified
@@ -13,23 +30,24 @@ function filterAndSort(data, authorFilter, priceMin, priceMax, sortBy) {
 
   // Apply sorting if specified
   if (sortBy) {
+    console.log("sortBy", sortBy);
     switch (sortBy) {
-      case "titleAsc":
+      case "title_asc":
         data.sort((a, b) => a.title.localeCompare(b.title));
         break;
-      case "titleDesc":
+      case "title_desc":
         data.sort((a, b) => b.title.localeCompare(a.title));
         break;
-      case "priceAsc":
+      case "price_asc":
         data.sort((a, b) => a.price - b.price);
         break;
-      case "priceDesc":
+      case "price_desc":
         data.sort((a, b) => b.price - a.price);
         break;
-      case "authorAsc":
+      case "author_asc":
         data.sort((a, b) => a.author.localeCompare(b.author));
         break;
-      case "authorDesc":
+      case "author_desc":
         data.sort((a, b) => b.author.localeCompare(a.author));
         break;
       default:
