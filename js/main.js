@@ -78,7 +78,10 @@ const checkout = (book_id) => {
     (filter_books_id) => filter_books_id.id == book_id
   );
   //console.log("filteredBook", filteredBook);
-  checkout_array.push(filteredBook[0]);
+  if (!checkout_array.includes(filteredBook[0])) {
+    console.log("book accesst------------------------");
+    checkout_array.push(filteredBook[0]);
+  }
   localStorage.setItem("checkout_array", JSON.stringify(checkout_array));
 };
 
