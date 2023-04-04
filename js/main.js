@@ -86,11 +86,20 @@ let get_book_id;
 let get_book_cate = "all";
 let get_auth;
 let sort_type;
+let max_input;
+let min_input;
+
 $("body").addEventListener("click", (e) => {
   let aElement = e.target.closest("a");
   let book_details = e.target.closest(".details");
   let checkout_id = e.target.closest(".checkout_id");
   let a_auth = e.target.closest(".auth_filter");
+  /* price range */
+  max_input = document.getElementById("max_price").value;
+  min_input = document.getElementById("min_price").value;
+  console.log("the max input", max_input);
+  console.log("the min input", min_input);
+  /* end of price range */
 
   if (a_auth) {
     get_auth = a_auth.getAttribute("auth_value");
@@ -187,17 +196,14 @@ $("body").addEventListener("click", (e) => {
 // when the user navigates back / forward -> load page
 window.addEventListener("popstate", () => loadPage());
 
-// load page - soft reload / à la SPA
-// (single page application) of the main content
-
 const displayBooks = () => {
   //console.log("get_Auth", get_auth);
   return filterAndSort(
     data,
     get_book_cate,
     get_auth,
-    null,
-    null,
+    min_input,
+    max_input,
     sort_type
   ).map(
     ({ title, author, url, price, id }) => /* html */ `
@@ -213,8 +219,8 @@ const displayBooks = () => {
       <h6>${title}</h6>
       <p>Author: ${author}</p>
       <p>Price: ${price} $</p>
-      <a href="/" class="btn btn-primary mb-1 checkout_id" book-checkout=${id}>Buy</a>
-      <a href="/details" class="btn btn-secondary details" book-id=${id} >Show Details</a>
+      <a href="/" class="btn btn-sm btn-primary mb-1  checkout_id" book-checkout=${id}><span>Buy</span></a>
+      <a href="/details" class="btn btn-sm btn-secondary details" book-id=${id} ><span>Show Details</span></a>
     </div>
   </div>
 </div>
@@ -316,6 +322,8 @@ const render_Authors = () => {
       /* html */ ` <li><a class="dropdown-item auth_filter" href="/" auth_value=${data.author}>${data.author}</a></li>`
   );
 };
+// load page - soft reload / à la SPA
+// (single page application) of the main content
 const pageCache = {};
 async function loadPage(src = location.pathname) {
   src = src === "/" ? "/start" : src;

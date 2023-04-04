@@ -6,6 +6,8 @@ export function filterAndSort(
   priceMax,
   sortBy
 ) {
+  console.log("priceMin", priceMin);
+  console.log("priceMax", priceMax);
   if (cateFilter) {
     console.log("category filter");
     if (cateFilter != "all") {
