@@ -79,7 +79,15 @@ const checkout = (book_id) => {
   );
   //console.log("filteredBook", filteredBook);
   checkout_array.push(filteredBook[0]);
-  return localStorage.setItem("checkout_array", JSON.stringify(checkout_array));
+  localStorage.setItem("checkout_array", JSON.stringify(checkout_array));
+};
+
+const calc_total_sum = (array) => {
+  let total_sum = 0;
+  array.forEach((book) => {
+    total_sum += book.price;
+  });
+  return total_sum;
 };
 
 let get_book_id;
@@ -351,7 +359,17 @@ async function loadPage(src = location.pathname) {
     const document = parse.parseFromString(html, "text/html");
     /* get the div with the id  */
     const selectedElement = document.querySelector("#bookCards");
-    /*  change the category name  */
+    /* render the checkout price */
+    const check_data = localStorage.getItem("checkout_array")
+      ? JSON.parse(localStorage.getItem("checkout_array"))
+      : "";
+    const sum = calc_total_sum(check_data);
+    const total_sum = 2.99 + sum; // delivery fee plus the sum
+    console.log("sum", sum);
+    document.querySelector("#subtotal_id").innerHTML = `$${sum}`;
+    document.querySelector("#total_id").innerHTML = `$${total_sum}`;
+    document.querySelector("#button_total_id").innerHTML = `$${total_sum}`;
+    /* display the selected books in the checkout page  */
     const chockElement = document.querySelector("#tbody");
     chockElement.innerHTML = checkoutCard().join("");
     html = document.documentElement.outerHTML;
