@@ -19,8 +19,11 @@ export function filterAndSort(
   }
   // Apply author filter if specified
   if (authorFilter) {
-    console.log("author filter");
-    data = data.filter((item) => item.author == authorFilter);
+    console.log("author filter is", authorFilter);
+    if (authorFilter != "all") {
+      data = data.filter((item) => item.author == authorFilter);
+    }
+    data = data;
   }
 
   // Apply price interval filter if specified

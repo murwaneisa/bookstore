@@ -65,12 +65,12 @@ function repeatElements() {
 const filter_books_id = (book_id) => {
   return data.filter((filter_books_id) => filter_books_id.id == book_id);
 };
-const filter_books_cate = (book_cate) => {
+/* const filter_books_cate = (book_cate) => {
   if (book_cate == "all") {
     return data;
   }
   return data.filter((filter_books) => filter_books.category === book_cate);
-};
+}; */
 
 const checkout_array = [];
 const checkout = (book_id) => {
@@ -79,7 +79,6 @@ const checkout = (book_id) => {
   );
   //console.log("filteredBook", filteredBook);
   if (!checkout_array.includes(filteredBook[0])) {
-    console.log("book accesst------------------------");
     checkout_array.push(filteredBook[0]);
   }
   localStorage.setItem("checkout_array", JSON.stringify(checkout_array));
@@ -105,11 +104,18 @@ $("body").addEventListener("click", (e) => {
   let book_details = e.target.closest(".details");
   let checkout_id = e.target.closest(".checkout_id");
   let a_auth = e.target.closest(".auth_filter");
+
+  var toggleBtn = document.querySelector('[data-toggle="collapse"]');
+  var collapseContent = document.querySelector(
+    toggleBtn.getAttribute("data-target")
+  );
+  toggleBtn.addEventListener("click", function () {
+    collapseContent.classList.toggle("show");
+  });
+
   /* price range */
   max_input = document.getElementById("max_price").value;
   min_input = document.getElementById("min_price").value;
-  console.log("the max input", max_input);
-  console.log("the min input", min_input);
   /* end of price range */
 
   if (a_auth) {
@@ -231,7 +237,7 @@ const displayBooks = () => {
       <p>Author: ${author}</p>
       <p>Price: ${price} $</p>
       <a href="/" class="btn btn-sm btn-primary mb-1  checkout_id" book-checkout=${id}><span>Buy</span></a>
-      <a href="/details" class="btn btn-sm btn-secondary details" book-id=${id} ><span>Show Details</span></a>
+      <a href="/details" class="btn  btn-sm btn-secondary details" book-id=${id} ><span>Show Details</span></a>
     </div>
   </div>
 </div>
@@ -330,7 +336,7 @@ const checkoutCard = () => {
 const render_Authors = () => {
   return data.map(
     (data) =>
-      /* html */ ` <li><a class="dropdown-item auth_filter" href="/" auth_value=${data.author}>${data.author}</a></li>`
+      /* html */ ` <li><link class="dropdown-item auth_filter"  auth_value=${data.author}>${data.author}</link></li>`
   );
 };
 // load page - soft reload / à la SPA
