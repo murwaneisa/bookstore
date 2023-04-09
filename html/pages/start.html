@@ -13,25 +13,25 @@
       <!-- end of text box  -->
       <!-- search bar  -->
       <div class="mb-3">
-        <div class="search">
+        <div class="search ">
           <!-- search icon -->
-        <i class="fa fa-search d-flex align-items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-search"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-            />
-          </svg>
-        </i>
-        <!-- end of search icon -->
-          <input type="text" class="form-control" placeholder="Search by title">
-          <a class="btn btn-primary"><span class="search-text">Search</span></a>
+          <i class="fa fa-search d-flex align-items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+          </i>
+          <!-- end of search icon -->
+          <input type="text" id="search_title" class="form-control" placeholder="Search by title">
+          <a  href="/" class="btn btn-sm btn-primary"><span class="search-text"> <span>Search</span></a>
         </div>
       </div>
       <!-- end of search bar  -->
@@ -47,7 +47,8 @@
   >
   <!-- toggle filter bar  -->
   <div class="d-flex justify-content-between m-4"> 
-    <h3>Category</h3>
+      <h3 id="cate_title">Category:</h3>
+ 
     <button
     class="btn btn-primary"
     data-toggle="collapse"
@@ -63,13 +64,13 @@
   </div>
 
 <div id="collapseExample" class="collapse">
-  <div class="bg-secondary"  >
+  <div class="bg-secondary p-2"  >
     <!-- filter bar -->
     <div
       class=" bg-secondary d-flex justify-content-between align-items-center"
     >
       <!-- dropdown category -->
-      <div class="dropdown btn btn-secondary btn-sm bg-dark">
+      <div class="dropdown btn btn-sm ">
         <a
           active-if-url-starts-with="/photos"
           class="nav-link dropdown-toggle"
@@ -99,7 +100,7 @@
       </div>
       <!-- end of dropdown category -->
       <!-- dropdown author -->
-      <div class="dropdown btn btn-secondary btn-sm bg-dark">
+      <div class="dropdown btn  btn-sm ">
         <a
           active-if-url-starts-with="/photos"
           class="nav-link dropdown-toggle"
@@ -118,7 +119,7 @@
         <!-- end dropdown author -->
       </div>
       <!-- dropdown author -->
-      <div class="dropdown btn btn-secondary btn-sm bg-dark">
+      <div class="dropdown btn  btn-sm ">
         <a
           active-if-url-starts-with="/photos"
           class="nav-link dropdown-toggle"
@@ -158,7 +159,7 @@
     <!-- end of filter bar  -->
   </div>
   <!-- price range  -->
-  <div class=" bg-secondary d-flex flex-column flex-md-row mt-4" >
+  <div class=" bg-secondary d-flex flex-column flex-md-row mt-4  align-items-center" >
     <div class="form-group d-flex  flex-md-row align-items-center" >
       <label for="price-range">Min Price:</label>
       <div class="m-2">
@@ -186,8 +187,8 @@
       </div>
     </div>
     <!-- filter price button -->
-    <div class="d-flex ml-4 justify-content-between align-items-center">
-      <a class="btn btn-dark " href="/" role="button">Filter</a>
+    <div class="serach-btn">
+      <a class="btn btn-dark m-8 " href="/" role="button">Filter</a>
     </div>
     <!-- end of filter price button -->
   </div>

@@ -98,6 +98,7 @@ let get_auth;
 let sort_type;
 let max_input;
 let min_input;
+let book_title;
 
 $("body").addEventListener("click", (e) => {
   let aElement = e.target.closest("a");
@@ -112,7 +113,8 @@ $("body").addEventListener("click", (e) => {
   toggleBtn.addEventListener("click", function () {
     collapseContent.classList.toggle("show");
   });
-
+  /*  book_title = document.getElementById("search_title").value;
+  console.log("book_title", book_title); */
   /* price range */
   max_input = document.getElementById("max_price").value;
   min_input = document.getElementById("min_price").value;
@@ -221,7 +223,8 @@ const displayBooks = () => {
     get_auth,
     min_input,
     max_input,
-    sort_type
+    sort_type,
+    book_title
   ).map(
     ({ title, author, url, price, id }) => /* html */ `
 <div class="col-sm-6 col-md-4 col-lg-2">

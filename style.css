@@ -9,9 +9,9 @@ main {
 .hero {
   position: relative;
   background: url(./public/hero4.jpg);
-  min-height: 100vh;
+  min-height: 82vh;
   background-size: cover;
-  background-position: 70% 30%;
+  background-position: center 80% bottom 20%;
 }
 
 .row {
@@ -120,7 +120,7 @@ main {
 }
 
 .search input {
-  height: 60px;
+  height: 40px;
   text-indent: 25px;
   border: 2px solid #d6d4d4;
 }
@@ -132,20 +132,20 @@ main {
 
 .search .fa-search {
   position: absolute;
-  top: 20px;
+  top: 12px;
   left: 16px;
 }
 
 .search a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 5px;
+  top: 3px;
   right: 5px;
-  height: 50px;
-  width: 110px;
+  height: 32px;
+  width: 100px;
   background: blue;
-}
-.search-text {
-  margin-top: 20px;
 }
 /* dropdown style */
 .dropdown-menu.show {
@@ -168,8 +168,11 @@ main {
   }
 }
 @media only screen and (max-width: 991px) {
+  .hero {
+    background-position: center;
+  }
   .container {
-    padding-top: 20%;
+    padding-top: 5%;
   }
   .hero {
     min-height: 70vh;
@@ -180,5 +183,11 @@ main {
   }
   .col-md-6 {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .container {
+    padding-top: 20%;
   }
 }

@@ -4,12 +4,11 @@ export function filterAndSort(
   authorFilter,
   priceMin,
   priceMax,
-  sortBy
+  sortBy,
+  bookTitle
 ) {
-  console.log("priceMin", priceMin);
-  console.log("priceMax", priceMax);
   if (cateFilter) {
-    console.log("category filter");
+    console.log("category filter", cateFilter);
     if (cateFilter != "all") {
       data = data.filter(
         (filter_books) => filter_books.category === cateFilter
@@ -31,6 +30,13 @@ export function filterAndSort(
     data = data.filter(
       (item) => item.price >= priceMin && item.price <= priceMax
     );
+  }
+  // Apply search book title if specified
+  if (bookTitle) {
+    console.log("first, book title", bookTitle);
+    if (bookTitle != "all") {
+      data = data.filter((item) => item.title === bookTitle);
+    }
   }
 
   // Apply sorting if specified
