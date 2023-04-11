@@ -107,17 +107,28 @@ $("body").addEventListener("click", (e) => {
   let a_auth = e.target.closest(".auth_filter");
 
   var toggleBtn = document.querySelector('[data-toggle="collapse"]');
-  var collapseContent = document.querySelector(
-    toggleBtn.getAttribute("data-target")
-  );
-  toggleBtn.addEventListener("click", function () {
-    collapseContent.classList.toggle("show");
-  });
-  /*  book_title = document.getElementById("search_title").value;
-  console.log("book_title", book_title); */
+
+  if (toggleBtn) {
+    var collapseContent = document.querySelector(
+      toggleBtn.getAttribute("data-target")
+    );
+    toggleBtn.addEventListener("click", function () {
+      collapseContent.classList.toggle("show");
+    });
+  }
+  /* get the value for input of the search bar */
+  const get_book_title = document.getElementById("search_title");
+  if (get_book_title) {
+    book_title = get_book_title.value;
+  }
+  console.log("book_title", book_title);
   /* price range */
-  max_input = document.getElementById("max_price").value;
-  min_input = document.getElementById("min_price").value;
+  const get_max_input = document.getElementById("max_price");
+  const get_min_input = document.getElementById("min_price");
+  if (get_max_input || get_min_input) {
+    max_input = get_max_input.value;
+    min_input = get_min_input.value;
+  }
   /* end of price range */
 
   if (a_auth) {
@@ -239,8 +250,8 @@ const displayBooks = () => {
       <h6>${title}</h6>
       <p>Author: ${author}</p>
       <p>Price: ${price} $</p>
-      <a href="/" class="btn btn-sm btn-primary mb-1  checkout_id" book-checkout=${id}><span>Buy</span></a>
-      <a href="/details" class="btn  btn-sm btn-secondary details" book-id=${id} ><span>Show Details</span></a>
+      <a href="/" class="btn btn-sm btn-success mb-1  checkout_id" book-checkout=${id}><span>Buy</span></a>
+      <a href="/details" class="btn  btn-sm btn-info details" book-id=${id} ><span>Show Details</span></a>
     </div>
   </div>
 </div>
@@ -408,7 +419,7 @@ async function loadPage(src = location.pathname) {
     doc.querySelector("#price-id").innerHTML = book_info[0].price;
     doc.querySelector("#description-id").innerHTML = book_info[0].description;
     doc.querySelector("#checkout_det").innerHTML = `<button
-    class="btn btn-danger text-uppercase mr-2 px-4 checkout_id" book-checkout=${book_info[0].id}
+    class="btn btn-success text-uppercase mr-2 px-4 checkout_id" book-checkout=${book_info[0].id}
   >
     Add to cart
   </button>`;

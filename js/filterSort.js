@@ -34,7 +34,7 @@ export function filterAndSort(
   // Apply search book title if specified
   if (bookTitle) {
     console.log("first, book title", bookTitle);
-    if (bookTitle != "all") {
+    if (bookTitle) {
       data = data.filter((item) => item.title === bookTitle);
     }
   }

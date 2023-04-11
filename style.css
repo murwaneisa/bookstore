@@ -98,17 +98,6 @@ main {
   margin-bottom: 10px;
 }
 
-.btn-danger {
-  background-color: #ff0000 !important;
-  border-color: #ff0000 !important;
-}
-.btn-danger:hover {
-  background-color: #da0606 !important;
-  border-color: #da0606 !important;
-}
-.btn-danger:focus {
-  box-shadow: none;
-}
 .cart i {
   margin-right: 10px;
 }
@@ -127,7 +116,7 @@ main {
 
 .search input:focus {
   box-shadow: none;
-  border: 2px solid black;
+  border: 2px solid #647a85;
 }
 
 .search .fa-search {
@@ -145,7 +134,7 @@ main {
   right: 5px;
   height: 32px;
   width: 100px;
-  background: blue;
+  background: #2d4156;
 }
 /* dropdown style */
 .dropdown-menu.show {
